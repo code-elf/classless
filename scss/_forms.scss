@@ -1,0 +1,104 @@
+@use "definitions" as *;
+@use "icons" as *;
+
+input[type="text"] {
+  padding: var(--spacer-1);
+  border-radius: var(--border-radius);
+  background: none;
+  font-size: var(--font-size-2);
+}
+
+input[type="checkbox"], input[type="radio"] {
+  appearance: none;
+  border: var(--border);
+  width: 1em;
+  aspect-ratio: 1;
+  font-size: var(--status-icon-size);
+  position: relative;
+
+  &:checked {
+    background-color: rgb(var(--accent));
+    &::before {
+      content: "";
+      display: block;
+    }
+  }
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  width: 1em;
+  aspect-ratio: 1;
+  font-size: var(--status-icon-size);
+
+  &:checked {
+    background-color: rgb(var(--accent));
+    &::before {
+      content: "";
+      display: block;
+      height: 100%;
+      @extend .icon, .icon-check;
+    }
+  }
+
+  @each $name, $color in $state-colors {
+    &.#{$name} {
+      border-color: rgb(var(--#{$name}));
+
+      &:checked {
+        background-color: rgb(var(--#{$name}) / .3);
+      }
+    }
+  }
+
+  &[role=switch] {
+    font-size: 1em;
+    width: 3em;
+    height: calc(1em + 2 * var(--spacer-1));
+    border-radius: 10rem;
+    aspect-ratio: auto;
+
+    &::before {
+      content: "";
+      background-color: currentColor;
+      border-radius: 100%;
+      display: block;
+      width: 1em;
+      aspect-ratio: 1;
+      position: absolute;
+      left: var(--spacer-1);
+      top: 50%;
+      transform: translateY(-50%);
+      transition: left .2s;
+    }
+
+    &:checked::before {
+      left: calc(100% - 1em - var(--spacer-1));
+      -webkit-mask-image: none;
+      height: auto;
+    }
+  }
+}
+
+input[type=radio] {
+  border-radius: 50%;
+
+  &:checked::before {
+    width: 50%;
+    aspect-ratio: 1;
+    background-color: currentColor;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+label:has(input[type=checkbox], input[type=radio]) {
+  display: inline-flex;
+  gap: var(--spacer-2);
+  align-items: center;
+}

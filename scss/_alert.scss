@@ -1,0 +1,25 @@
+@use "definitions" as *;
+@use "icons" as *;
+
+[role=alert] {
+  display: flex;
+  padding: var(--spacer-2);
+  border-radius: var(--border-radius);
+  border: var(--border);
+  gap: var(--spacer-1);
+  align-items: center;
+
+  @each $name, $color in $state-colors {
+    &.#{$name} {
+      background-color: rgb(var(--#{$name}) / .3);
+      border-color: rgb(var(--#{$name}));
+
+      &::before {
+        content: "";
+        @extend .icon, .icon-#{$name};
+        color: rgb(var(--#{$name}));
+        font-size: var(--status-icon-size);
+      }
+    }
+  }
+}

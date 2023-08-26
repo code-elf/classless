@@ -1,0 +1,78 @@
+.has-tooltip {
+  position: relative;
+
+  [role=tooltip] {
+    &, &::before {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    background-color: rgb(var(--primary));
+    padding: var(--tooltip-arrow-size);
+    top: calc(100% + var(--tooltip-arrow-size));
+    border-radius: var(--border-radius);
+    max-width: 300px;
+    display: none;
+    width: max-content;
+
+    &::before {
+      content: "";
+      bottom: 100%;
+      border-left: solid var(--tooltip-arrow-size) transparent;
+      border-right: solid var(--tooltip-arrow-size) transparent;
+      border-bottom: solid var(--tooltip-arrow-size) rgb(var(--primary));
+    }
+  }
+
+  &:hover, &:focus-within {
+    [role=tooltip] {
+      display: block;
+    }
+  }
+
+  &.top [role=tooltip] {
+    top: unset;
+    bottom: calc(100% + var(--tooltip-arrow-size));
+    &::before {
+      border-bottom: unset;
+      border-top: solid var(--tooltip-arrow-size) rgb(var(--primary));
+      top: 100%;
+      bottom: unset;
+    }
+  }
+
+  &.left [role=tooltip] {
+    &, &::before {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    left: unset;
+    right: calc(100% + var(--tooltip-arrow-size));
+    &::before {
+      border-top: solid var(--tooltip-arrow-size) transparent;
+      border-bottom: solid var(--tooltip-arrow-size) transparent;
+      border-left: solid var(--tooltip-arrow-size) rgb(var(--primary));
+      left: 100%;
+      bottom: unset;
+    }
+  }
+
+  &.right [role=tooltip] {
+    &, &::before {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    left: calc(100% + var(--tooltip-arrow-size));
+    &::before {
+      border-top: solid var(--tooltip-arrow-size) transparent;
+      border-bottom: solid var(--tooltip-arrow-size) transparent;
+      border-right: solid var(--tooltip-arrow-size) rgb(var(--primary));
+      left: unset;
+      right: 100%;
+      bottom: unset;
+    }
+  }
+}

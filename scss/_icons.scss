@@ -1,0 +1,14 @@
+.icon {
+  background-color: currentColor;
+  aspect-ratio: 1;
+  width: 1em;
+}
+
+$default-icons: (error, warning, success, info, check);
+
+@each $name in $default-icons {
+  .icon-#{$name} {
+    -webkit-mask-image: var(--icon-#{$name});
+    mask-image: var(--icon-#{$name});
+  }
+}

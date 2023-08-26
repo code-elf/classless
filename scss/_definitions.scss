@@ -1,0 +1,35 @@
+$font-sizes: (.8, 1, 1.25, 1.5, 2, 3) !default;
+$brand-colors: (
+        primary: (136 0 248),
+        accent: (255 165 0),
+) !default;
+$state-colors: (
+        warning: (255 140 0),
+        error: (255 0 0),
+        success: (0 255 0),
+        info: (0 0 255)
+) !default;
+$colors: map-merge($brand-colors, $state-colors) !default;
+$spacers: (.2, .5, 1, 2) !default;
+
+:root {
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
+  @for $i from 1 through length($spacers) {
+    --spacer-#{$i}: #{nth($spacers, $i) * 1rem};
+  }
+  @for $i from 1 through length($font-sizes) {
+    --font-size-#{$i}: #{nth($font-sizes, $i) * 1rem};
+  }
+  --border: solid 1px currentColor;
+  --border-radius: .5rem;
+  --status-icon-size: 1.5em;
+  --tooltip-arrow-size: var(--spacer-2);
+  --icon-error: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M256 42.67c117.8 0 213.33 95.53 213.33 213.33 0 117.8-95.53 213.33-213.33 213.33-117.8 0-213.33-95.53-213.33-213.33C42.67 138.2 138.2 42.67 256 42.67Zm0 42.66C161.9 85.33 85.33 161.9 85.33 256S161.9 426.67 256 426.67 426.67 350.1 426.67 256 350.1 85.33 256 85.33Zm48.92 91.59 30.16 30.16L286.17 256l48.91 48.92-30.16 30.16L256 286.17l-48.92 48.91-30.16-30.16L225.83 256l-48.91-48.92 30.16-30.16L256 225.83l48.92-48.91Z"/></svg>');
+  --icon-warning: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15h.01M12 12V9M4.98 19h14.04a2 2 0 0 0 1.73-3L13.73 3.95a2 2 0 0 0-3.46 0L3.25 16a2 2 0 0 0 1.73 3Z"/></svg>');
+  --icon-success: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="black" stroke-width="2" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/><path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 1.68 1.68v0c.18.18.46.18.64 0v0L15 10"/></svg>');
+  --icon-info: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path fill="black" fill-rule="evenodd" d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm-9 7a9 9 0 1 1 18 0 9 9 0 0 1-18 0zm8-4a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H10a1 1 0 0 1-1-1zm.01 8a1 1 0 1 0 2 0V9a1 1 0 1 0-2 0v5z"/></svg>');
+  --icon-check: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="black" fill-rule="evenodd" d="M20.61 5.2a1 1 0 0 1 .18 1.41l-10 13a1 1 0 0 1-1.5.1l-5-5a1 1 0 0 1 1.42-1.42l4.2 4.2 9.3-12.1a1 1 0 0 1 1.4-.18Z" clip-rule="evenodd"/></svg>');
+}
+

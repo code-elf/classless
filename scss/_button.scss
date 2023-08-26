@@ -1,0 +1,26 @@
+@use "definitions" as *;
+
+button {
+  display: inline-flex;
+  border: var(--border);
+  background: none;
+  padding: var(--spacer-1);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-2);
+
+  @each $name, $color in $colors {
+    &.#{$name} {
+      background-color: rgb(var(--#{$name}) / .3);
+      border-color: rgb(var(--#{$name}));
+
+      &.outline {
+        background: none;
+      }
+
+      &:hover {
+        background-color: rgb(var(--#{$name}) / .5);
+      }
+    }
+  }
+}

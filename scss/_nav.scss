@@ -1,0 +1,17 @@
+nav {
+  background: rgb(var(--primary));
+  padding: 0 var(--spacer-3);
+  grid-area: Nav;
+  display: flex;
+
+  > a {
+    padding: var(--spacer-3);
+    display: block;
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover, &[aria-current="page"] {
+      color: rgb(var(--accent));
+    }
+  }
+}

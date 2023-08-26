@@ -1,0 +1,10 @@
+.paragraphs {
+  display: grid;
+  gap: var(--spacer-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-item-width), 1fr));
+  gap: var(--spacer-3);
+}

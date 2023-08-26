@@ -1,0 +1,18 @@
+body {
+  display: grid;
+  grid-template:
+          "Nav Nav" min-content
+          "Sidebar Main" 1fr
+          "Footer Footer" min-content
+          / min-content 1fr;
+  font-family: "Fira Sans", sans-serif;
+}
+
+main {
+  grid-area: Main;
+  padding: var(--spacer-2);
+}
+
+footer {
+  grid-area: Footer;
+}
